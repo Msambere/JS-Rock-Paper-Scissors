@@ -55,12 +55,33 @@
                 };
             };
            
-           
+            function game() {
+                let round = 0;
+                let computerScore = 0;
+                let playerScore = 0;
+                while (round < 5){
+                    winner = playRound();
+                    if (winner === "Player wins!"){
+                        playerScore ++;
+                    } else if (winner === "Computer wins!") {
+                        computerScore ++;
+                    };
+                    round ++;
+                    console.log(winner)
+                    console.log(`Player's score: ${playerScore}`);
+                    console.log(`Computer's score ${computerScore}`);
+                    console.log(`Round: ${round}`);
+                };
+                return declareWinner(computerScore, playerScore)
+            };
+
             function declareWinner (a,b) {
                 if (a > b){
                     return `Computer wins ${a} to ${b}.`;
-                } else {
+                } else if (b>a) {
                     return `Player wins ${b} to ${a}.`;
+                } else {
+                    return `It's a tie! ${b} to ${a}`;
                 }
             };
         </script> 
