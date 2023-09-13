@@ -5,7 +5,14 @@
         <title>Rock-Paper-Scissors</title>
         <script>
             function getComputerChoice(){
-               
+                number = getRandomIntInclusive()
+                if (number === 3) {
+                    return  "ROCK";
+                } else if (number === 2){ 
+                    return "SCISSORS";
+                } else {
+                    return "PAPER";
+                } 
             }; 
             function getRandomIntInclusive() {
                 min = Math.ceil(1);
