@@ -17,12 +17,14 @@
             function getRandomIntInclusive() {
                 min = Math.ceil(1);
                 max = Math.floor(3);
-                return Math.floor(Math.random() * (max - min + 1) + min)
+                return Math.floor(Math.random() * (max - min + 1) + min);
             };
             function getPlayerSelection(){
-                prompt("Choose one: rock, paper, or scissors:")
-                //change input to upper case
-                //check if it is valid input
+                do {
+                    choice = prompt("Choose one: rock, paper, or scissors:");
+                    choice = choice.toUpperCase();
+                } while (choice != "ROCK" && choice != "PAPER" && choice != "SCISSORS");
+               return choice
             }
             function playRound(playerSelection, computerSelection){
                 //Checks against a tie
