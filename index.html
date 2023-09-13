@@ -56,21 +56,21 @@
             };
            
             function game() {
-                let round = 0;
+                let round = 1;
                 let computerScore = 0;
                 let playerScore = 0;
-                while (round < 5){
+                while (round < 6){
+                    console.log(`Round: ${round}`);
                     winner = playRound();
                     if (winner === "Player wins!"){
                         playerScore ++;
                     } else if (winner === "Computer wins!") {
                         computerScore ++;
                     };
-                    round ++;
                     console.log(winner)
                     console.log(`Player's score: ${playerScore}`);
                     console.log(`Computer's score ${computerScore}`);
-                    console.log(`Round: ${round}`);
+                    round ++;
                 };
                 return declareWinner(computerScore, playerScore)
             };
