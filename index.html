@@ -5,9 +5,13 @@
         <title>Rock-Paper-Scissors</title>
         <script>
             function getComputerChoice(){
-                //randomly returns one of the 3 choices
+               
+            }; 
+            function getRandomIntInclusive() {
+                min = Math.ceil(1);
+                max = Math.floor(3);
+                return Math.floor(Math.random() * (max - min + 1) + min)
             };
-
             function getPlayerSelection(){
                 prompt("Choose one: rock, paper, or scissors:")
                 //change input to upper case
