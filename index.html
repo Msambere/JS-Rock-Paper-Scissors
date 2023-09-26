@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Rock-Paper-Scissors</title>
-        <script src="javascript.js" defer></script>
+        <!--<script src="javascript.js" defer></script>-->
     </head>
     <body>
         <h1> JS Rock Paper Scissors game</h1>
@@ -12,6 +12,86 @@
             <button class="btn">PAPER</button>
             <button class="btn">SCISSORS</button>
         </div>
-        <div class="results"></div>
+        <div class="results">
+            <div class = "results" id = "selections"></div>
+            <div class = "results" id="roundWin"></div>
+            <div class = "results" id = "scores"></div>
+            <div class = "results" id="gameWin"></div>
+        </div>
     </body>
+    <script>
+        winScore = 5
+        let computerScore = 0;
+        let playerScore = 0;
+
+        function getComputerChoice(){
+            number = Math.floor(Math.random()*3);
+            computerChoice = ["ROCK", "PAPER", "SCISSORS"];
+                return  computerChoice[number];
+        }; 
+
+        function getPlayerSelection(e) {
+            return e.target.textContent;    
+        }; 
+
+        function playRound(e) {
+            const playerSelection = getPlayerSelection(e);
+            const computerSelection = getComputerChoice();
+            let result =''
+            if (playerSelection === computerSelection){
+                result = "It's a tie!";
+            } else if ((playerSelection === "SCISSORS" && computerSelection === "Paper") ||
+                (playerSelection === " PAPER" && computerSelection === "ROCK") ||
+                (playerSelection === "ROCK" && computerSelection === "SCISSORS")) {
+                result= "Player wins this round";
+                playerScore ++;
+            } else{
+                result = "Computer wins this round";
+                computerScore ++;
+            };
+            console.log (`Player chose ${playerSelection}.`);
+            console.log (`Computer chose ${computerSelection}.`);
+            console.log (result);
+            console.log(`Computer: ${computerScore}   Player: ${playerScore}`);
+            
+            const choices = document.getElementById("selections");
+            choices.textContent = `Player chose ${playerSelection}.  Computer chose ${computerSelection}.`;
+
+            const roundWin = document.getElementById("roundWin");
+            roundWin.textContent = result;
+
+            const scores = document.getElementById("scores");
+            scores.textContent = `Computer: ${computerScore}   Player: ${playerScore}`;
+
+            let winner = declareWinner(computerScore, playerScore);
+      
+            const gameWin = document.getElementById("gameWin");
+            gameWin.textContent = winner;
+        };
+
+
+
+        function declareWinner (a,b) {
+            if (a == winScore){
+                return `Game over. Computer wins ${a} to ${b}.`;
+            } else if (b==winScore){
+                return `Game over. Player wins ${b} to ${a}.`;
+            } else {
+                return 'Who will win...';
+            };
+        };
+
+        window.addEventListener('click', playRound);
+        const results = document.querySelector('.results');
+        results.style.cssText ='border: 2px dotted black; padding: 10px; margin: 20px;';
+
+        /*
+        Ideas:
+        -A image, color coded table that shows and tracks round results
+        -disable buttons once someone wins
+        -animation for winning
+        -restart/reload button
+        
+        */
+    </script>
 </html>

@@ -27,6 +27,7 @@ function playRound(e) {
     const playerSelection = e.target.textContent;
     const computerSelection = getComputerChoice();
     console.log (`Player chose ${playerSelection}.`);
+    results.textContent = `Player chose ${playerSelection}.`;
     console.log (`Computer chose ${computerSelection}.`);
     let result =''
     if (playerSelection === computerSelection){
@@ -89,4 +90,4 @@ function updateScore(){
 
 window.addEventListener('click', playRound);
 
-div.results.
+
